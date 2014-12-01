@@ -123,6 +123,14 @@ describe('lib/group-reduce.js', function() {
 		expect(result).to.deep.equal([ { id: 1, sum: 3 }, { id: 2, sum: 3 } ]);
 	});
 
+	it('should return a map', function() {
+		var map = group(simple).by('id').map(function(key, entries) {
+			return entries.map(getCount).reduce(add);
+		});
+		expect(map).to.have.property('1').that.equals(3);
+		expect(map).to.have.property('2').that.equals(3);
+	});
+
 	it('should do everything in one test', function() {
 		var entries = complex.reduce(function(list, user) {
 			return list.concat(user.usage.map(function(day) {
@@ -151,4 +159,5 @@ describe('lib/group-reduce.js', function() {
 			{ year: 2016, users: [ { "id": 1, "sum": 5 } ] }
 		]);
 	});
+
 });

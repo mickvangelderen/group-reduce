@@ -1,6 +1,6 @@
 {
   "name": "group-reduce",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Group an array by a (computed) property and reduce it",
   "main": "index.js",
   "scripts": {
